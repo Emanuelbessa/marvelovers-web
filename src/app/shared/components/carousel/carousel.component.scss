@@ -1,0 +1,10 @@
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.50);
+  left: unset !important;
+  right: unset !important;
+}
+
+.carousel-item.active, .carousel-item-next, .carousel-item-prev {
+  display: flex !important;
+  justify-content: center !important;
+}
