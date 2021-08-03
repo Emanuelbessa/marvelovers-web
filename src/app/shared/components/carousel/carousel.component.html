@@ -1,0 +1,19 @@
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3">
+  <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide *ngFor="let image of images">
+      <div class="carousel-caption w-55">
+        <h1>Sua plataforma Heróica</h1>
+        <p class="h5">
+          Encontre todos os quadrinhos e heróis Marvel em um só lugar
+        </p>
+        <p class="h5">
+          Você pode favorita-los e ver todos os dados dos seus personagens
+          favoritos
+        </p>
+      </div>
+      <div class="picsum-img-wrapper">
+        <img class="img-fluid" [src]="image" alt="Random second slide" />
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
