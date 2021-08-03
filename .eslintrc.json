@@ -31,7 +31,9 @@
           }
         ],
         "import/prefer-default-export": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "@typescript-eslint/no-useless-constructor": "off",
+        "@typescript-eslint/no-empty-function": "off"
       }
     },
     {
