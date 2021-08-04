@@ -6,10 +6,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '@shared/shared.module';
 import { CharactersComponent } from './list/characters.component';
 import { CharacterRoutingModule } from './characters.routing';
+import { FavoritedComponent } from './favorited/favorited.component';
 
 @NgModule({
   declarations: [
     CharactersComponent,
+    FavoritedComponent,
   ],
   imports: [
     CommonModule,

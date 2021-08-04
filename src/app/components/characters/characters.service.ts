@@ -20,8 +20,8 @@ export class CharactersService {
     });
   }
 
-  readAllCharactersFavs(): Observable<any> {
-    return this.http.get<any>(`${this.baseURL}/favorites`);
+  readAllCharactersFavs(): Observable<CharacterFavs[]> {
+    return this.http.get<CharacterFavs[]>(`${this.baseURL}/favorites`);
   }
 
   favorite(character: CharacterFavs): Observable<any> {

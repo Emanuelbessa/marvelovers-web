@@ -70,4 +70,5 @@ export interface CharacterFavs {
   des_name_cha: string;
   des_thumbnail_cha: string;
   des_description_cha: string;
+  favorited?: boolean;
 }
