@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FavoritedComponent } from './favorited/favorited.component';
 import { CharactersComponent } from './list/characters.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'characters',
     children: [
       {
-        path: 'characters',
+        path: '',
         component: CharactersComponent,
+        data: {
+          title: 'Characters',
+        },
+      },
+      {
+        path: 'favorites',
+        component: FavoritedComponent,
         data: {
           title: 'Characters',
         },

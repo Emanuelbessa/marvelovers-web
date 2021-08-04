@@ -1,0 +1,107 @@
+<main role="main">
+  <div class="album py-5 bg-light">
+    <form
+      class="form-inline mb-3 d-flex justify-content-center"
+      (ngSubmit)="searchCharacters(inputcharacter.value)"
+      #form="ngForm"
+    >
+      <input
+        class="form-control mr-sm-2 col-6"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        #inputcharacter
+      />
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-md-4"
+          *ngFor="
+            let character of favoritesFiltered
+              | paginate
+                : {
+                    id: 'server',
+                    itemsPerPage: 9,
+                    currentPage: p,
+                    totalItems: total
+                  }
+          "
+        >
+          <div class="card mb-4 box-shadow">
+            <div
+              class="
+                h5
+                card-header
+                text-center
+                bg-black
+                text-white
+                font-weight-bold
+              "
+            >
+              {{ character.des_name_cha }}
+            </div>
+            <img
+              class="card-img-top"
+              [src]="character.des_thumbnail_cha"
+              [alt]="character.des_name_cha"
+            />
+            <div class="card-body">
+              <p
+                class="card-text"
+                *ngIf="character.des_description_cha; else messagedescription"
+              >
+                {{ character.des_description_cha | slice: 0:70 }}...
+              </p>
+              <ng-template #messagedescription>
+                <p>
+                  Não temos messagem para esse héroi, já pensou em sugerir à
+                  Marvel?
+                </p>
+              </ng-template>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    [ngClass]="{
+                      'btn-warning': character.favorited,
+                      'btn-outline-secondary': !character.favorited
+                    }"
+                    (click)="favorite(character)"
+                  >
+                    <app-feather-icons [icon]="'star'"></app-feather-icons>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                  >
+                    <app-feather-icons [icon]="'search'"></app-feather-icons>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered text-center">
+        <pagination-controls
+          id="server"
+          class="my-pagination"
+          (pageChange)="getPage($event, inputcharacter.value)"
+          (pageBoundsCorrection)="getPage($event, inputcharacter.value)"
+          [responsive]="true"
+          [autoHide]="true"
+          previousLabel="Anterior"
+          nextLabel="Próxima"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page"
+          screenReaderCurrentLabel="Você está em"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</main>
