@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center mt-4 mb-3" *ngIf="isLoaded">
+  <div class="col-md-6">
+    <div class="card" style="width: 40rem">
+      <div
+        class="h5 card-header text-center bg-black text-white font-weight-bold"
+      >
+        {{ character.name }}
+      </div>
+      <img
+        class="card-img-top"
+        [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          {{ character.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card" style="width: 18rem">
+      <div class="card-header">Comics</div>
+      <ul class="list-group list-group-flush">
+        <li
+          *ngFor="let comic of character.comics.items"
+          class="list-group-item"
+        >
+          <a
+            [routerLink]="[
+              '/comics/details/',
+              comic.resourceURI.split('comics/')[1]
+            ]"
+            >{{ comic.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CharacterFavs } from './dto/character.dto';
+import { CharacterDto, CharacterFavs } from './dto/character.dto';
 import { Params } from './dto/params.dto';
 
 @Injectable({
@@ -26,5 +26,9 @@ export class CharactersService {
 
   favorite(character: CharacterFavs): Observable<any> {
     return this.http.post<any>(`${this.baseURL}/favorite`, character);
+  }
+
+  getCharacterById(marvelId: number): Observable<CharacterDto[]> {
+    return this.http.get<CharacterDto[]>(`${this.baseURL}/${marvelId}`);
   }
 }

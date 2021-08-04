@@ -75,12 +75,16 @@
                   >
                     <app-feather-icons [icon]="'star'"></app-feather-icons>
                   </button>
-                  <button
+                  <a
+                    [routerLink]="[
+                      '/characters/details/',
+                      character.cod_marvelid_cha
+                    ]"
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
                   >
                     <app-feather-icons [icon]="'search'"></app-feather-icons>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
