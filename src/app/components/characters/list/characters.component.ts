@@ -1,8 +1,9 @@
+/* eslint-disable no-param-reassign */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CharactersService } from '../characters.service';
-import { CharacterDto } from '../dto/character.dto';
+import { CharacterDto, CharacterFavs } from '../dto/character.dto';
 import { Params } from '../dto/params.dto';
 
 @Component({
@@ -12,6 +13,8 @@ import { Params } from '../dto/params.dto';
 })
 export class CharactersComponent implements OnInit {
   characters: CharacterDto[];
+
+  charactersFavs: CharacterFavs[];
 
   p: number = 1;
 
@@ -23,6 +26,15 @@ export class CharactersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.characterService
+      .readAllCharactersFavs()
+      .subscribe(
+        (favs) => {
+          this.charactersFavs = favs;
+        },
+        () => {
+        },
+      );
     this.getPage(1);
   }
 
@@ -44,6 +56,13 @@ export class CharactersComponent implements OnInit {
           this.characters = characters.results;
           this.total = characters.total;
           this.p = page;
+          this.characters.forEach((charac) => {
+            const isFavorited = this.charactersFavs
+              .find((favorite) => favorite.cod_marvelid_cha === charac.id);
+            if (isFavorited) {
+              charac.favorited = true;
+            }
+          });
           Swal.close();
         },
         (err) => {
@@ -54,5 +73,38 @@ export class CharactersComponent implements OnInit {
 
   searchCharacters(nameCharacter: string): void {
     this.getPage(1, nameCharacter);
+  }
+
+  favorite(character: CharacterDto) {
+    const characterFav: CharacterFavs = {
+      cod_marvelid_cha: character.id,
+      des_description_cha: character.description,
+      des_name_cha: character.name,
+      des_thumbnail_cha: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+    };
+
+    this.characterService
+      .favorite(characterFav)
+      .subscribe(
+        () => {
+          character.favorited = !character.favorited;
+          Swal.fire({
+            icon: 'success',
+            title: `Personagem ${character.favorited ? '' : 'des'}favoritado!`,
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
   }
 }
