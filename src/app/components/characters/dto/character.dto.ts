@@ -10,6 +10,7 @@ export interface CharacterDto {
   stories: Stories;
   events: Comics;
   urls: URL[];
+  favorited: boolean;
 }
 
 export interface Comics {
@@ -62,4 +63,11 @@ export enum URLType {
   Comiclink = 'comiclink',
   Detail = 'detail',
   Wiki = 'wiki',
+}
+
+export interface CharacterFavs {
+  cod_marvelid_cha: number;
+  des_name_cha: string;
+  des_thumbnail_cha: string;
+  des_description_cha: string;
 }
