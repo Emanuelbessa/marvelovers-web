@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserToken } from '@shared/model/user';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
 
@@ -13,8 +12,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
-  user: UserToken;
 
   constructor(
     private router: Router,

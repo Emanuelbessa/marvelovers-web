@@ -1,0 +1,187 @@
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <!-- The image half -->
+    <div class="col-md-7 d-none d-md-flex bg-image"></div>
+    <!-- The content half -->
+    <div class="col-md-5 bg-dark">
+      <div class="login d-flex align-items-center py-5">
+        <!-- Demo content-->
+        <div class="container d-flex justify-content-center">
+          <div class="row">
+            <div class="col-lg-12 col-xl-12">
+              <h2 class="text-light text-center">MARVELOVERS!</h2>
+              <h4 class="text-light mb-4">
+                Faça seu cadastro e entre no mundo Marvel.
+              </h4>
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3">
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Nome"
+                    required=""
+                    autofocus=""
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    formControlName="des_name_usr"
+                  />
+                  <div
+                    *ngIf="
+                      registerForm.get('des_name_usr').hasError('required') &&
+                      registerForm.get('des_name_usr').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Campo obrigatório.
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input
+                    id="nickname"
+                    type="text"
+                    placeholder="Apelido"
+                    required=""
+                    autofocus=""
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    formControlName="des_nickname_usr"
+                  />
+                  <div
+                    *ngIf="
+                      registerForm
+                        .get('des_nickname_usr')
+                        .hasError('required') &&
+                      registerForm.get('des_nickname_usr').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Campo obrigatório.
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Email"
+                    required=""
+                    autofocus=""
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    formControlName="des_email_usr"
+                  />
+                  <div
+                    *ngIf="
+                      registerForm.get('des_email_usr').hasError('required') &&
+                      registerForm.get('des_email_usr').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Campo obrigatório.
+                  </div>
+                  <div
+                    *ngIf="
+                      registerForm.get('des_email_usr').hasError('email') &&
+                      registerForm.get('des_email_usr').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Email inválido!
+                  </div>
+                </div>
+                <div class="form-row" formGroupName="pass">
+                  <div class="form-group col-md-6">
+                    <label class="col-form-label text-light">Senha</label>
+                    <input
+                      class="form-control rounded-pill border-0 shadow-sm px-4"
+                      placeholder="*********"
+                      type="password"
+                      formControlName="password"
+                    />
+                    <div
+                      class="text text-danger mt-2"
+                      *ngIf="
+                        registerForm
+                          .get('pass.password')
+                          .hasError('required') &&
+                        registerForm.get('pass.password').touched
+                      "
+                    >
+                      Campo obrigatório!
+                    </div>
+                    <div
+                      class="text text-danger mt-2"
+                      *ngIf="
+                        registerForm
+                          .get('pass.password')
+                          .hasError('minlength') &&
+                        registerForm.get('pass.password').touched
+                      "
+                    >
+                      Mínimo 8 caracteres!
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label class="col-form-label text-light"
+                      >Confirme senha</label
+                    >
+                    <input
+                      class="form-control rounded-pill border-0 shadow-sm px-4"
+                      placeholder="*********"
+                      type="password"
+                      formControlName="passwordConfirmed"
+                    />
+                    <div
+                      class="text text-danger mt-2"
+                      *ngIf="
+                        registerForm
+                          .get('pass.passwordConfirmed')
+                          .hasError('required') &&
+                        registerForm.get('pass.passwordConfirmed').touched
+                      "
+                    >
+                      Campo obrigatório!
+                    </div>
+                    <div
+                      class="text text-danger mt-2"
+                      *ngIf="
+                        registerForm
+                          .get('pass.passwordConfirmed')
+                          .hasError('minlength') &&
+                        registerForm.get('pass.passwordConfirmed').touched
+                      "
+                    >
+                      Mínimo 8 caracteres!
+                    </div>
+                    <div
+                      class="text text-danger mt-2"
+                      *ngIf="
+                        registerForm
+                          .get('pass.passwordConfirmed')
+                          .hasError('mismatch') &&
+                        registerForm.get('pass.passwordConfirmed').touched
+                      "
+                    >
+                      As senhas não correspondem!
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="
+                    btn btn-primary btn-block
+                    text-uppercase
+                    mt-3
+                    rounded-pill
+                    shadow-sm
+                  "
+                >
+                  Cadastrar-se
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End -->
+      </div>
+    </div>
+    <!-- End -->
+  </div>
+</div>
