@@ -1,12 +1,87 @@
-<nav class="navbar">
-  <div class="container d-flex flex-column flex-md-row justify-content-between">
-    <a class="py-2" href="#"> </a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Tour</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Product</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Features</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Enterprise</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Support</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Pricing</a>
-    <a class="py-2 d-none d-md-inline-block text-light" href="#">Cart</a>
+<nav class="navbar navbar-expand-lg">
+  <div class="collapse navbar-collapse" *ngIf="!this.user">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link h5 font-weight-bold active text-light ml-3 mr-3"
+          href="/home"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link h5 font-weight-bold text-light mr-3"
+          href="/auth/login"
+          >Login</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link h5 font-weight-bold text-light mr-3"
+          href="/auth/register"
+          >Cadastrar-se</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div class="collapse navbar-collapse" *ngIf="this.user">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link h5 font-weight-bold active text-light ml-3 mr-3"
+          href="/home"
+          >Home</a
+        >
+      </li>
+      <li ngbDropdown class="nav-item">
+        <a
+          class="h5 font-weight-bold py-2 d-none d-md-inline-block text-light"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+          (click)="(false)"
+          href="#"
+        >
+          Personagens
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a ngbDropdownItem href="/characters">Todos</a>
+          <a ngbDropdownItem href="/characters/favorites">Meus Favoritos</a>
+        </div>
+      </li>
+      <li ngbDropdown class="nav-item">
+        <a
+          class="
+            h5
+            font-weight-bold
+            py-2
+            d-none
+            ml-3
+            d-md-inline-block
+            text-light
+          "
+          id="dropdownBasic1"
+          ngbDropdownToggle
+          (click)="(false)"
+          href="#"
+        >
+          Quadrinhos
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a ngbDropdownItem href="/comics">Todos</a>
+          <a ngbDropdownItem href="/comics/favorites">Meus Favoritos</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link h5 ml-3 font-weight-bold text-light mr-3"
+          href="#"
+          (click)="logout()"
+          >Logout</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

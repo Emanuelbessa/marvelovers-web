@@ -52,9 +52,12 @@ export class AuthService {
   decodeToken(): UserToken {
     const jwtHelper = new JwtHelperService();
 
-    return jwtHelper.decodeToken(
-      JSON.parse(localStorage.getItem('currentUser')).access_token,
-    );
+    if (localStorage.getItem('currentUser')) {
+      return jwtHelper.decodeToken(
+        JSON.parse(localStorage.getItem('currentUser')).access_token,
+      );
+    }
+    return null;
   }
 
   register(user: CreateUserDto): Observable<unknown> {
