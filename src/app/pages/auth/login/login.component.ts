@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       .login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
       .subscribe(
         () => {
+          this.router.navigate(['/characters']);
         },
         (_err) => {
           console.log(_err);
