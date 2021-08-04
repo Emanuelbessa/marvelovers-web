@@ -7,11 +7,13 @@ import { SharedModule } from '@shared/shared.module';
 import { CharactersComponent } from './list/characters.component';
 import { CharacterRoutingModule } from './characters.routing';
 import { FavoritedComponent } from './favorited/favorited.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     CharactersComponent,
     FavoritedComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
