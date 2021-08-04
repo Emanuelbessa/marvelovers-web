@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserToken } from '@shared/model/user';
+import { CreateUserDto, UserToken } from '@shared/model/user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -55,5 +55,9 @@ export class AuthService {
     return jwtHelper.decodeToken(
       JSON.parse(localStorage.getItem('currentUser')).access_token,
     );
+  }
+
+  register(user: CreateUserDto): Observable<unknown> {
+    return this.http.post(`${this.baseURL}/register`, user);
   }
 }
