@@ -1,0 +1,92 @@
+<main role="main">
+  <div class="album py-5 bg-light">
+    <form
+      class="form-inline mb-3 d-flex justify-content-center"
+      (ngSubmit)="searchCharacters(inputcharacter.value)"
+      #form="ngForm"
+    >
+      <input
+        class="form-control mr-sm-2 col-6"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        #inputcharacter
+      />
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-md-4"
+          *ngFor="
+            let character of characters
+              | paginate
+                : {
+                    id: 'server',
+                    itemsPerPage: 9,
+                    currentPage: p,
+                    totalItems: total
+                  }
+          "
+        >
+          <div class="card mb-4 box-shadow">
+            <img
+              class="card-img-top"
+              [src]="
+                character.thumbnail.path + '.' + character.thumbnail.extension
+              "
+              [alt]="character.name"
+            />
+            <div class="card-body">
+              <p
+                class="card-text"
+                *ngIf="character.description; else messagedescription"
+              >
+                {{ character.description | slice: 0:70 }}...
+              </p>
+              <ng-template #messagedescription>
+                <p>
+                  Não temos messagem para esse héroi, já pensou em sugerir à
+                  Marvel?
+                </p>
+              </ng-template>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                  >
+                    <app-feather-icons [icon]="'thumbs-up'"></app-feather-icons>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                  >
+                    <app-feather-icons [icon]="'search'"></app-feather-icons>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-centered text-center">
+        <pagination-controls
+          id="server"
+          class="my-pagination"
+          (pageChange)="getPage($event)"
+          (pageBoundsCorrection)="getPage($event)"
+          [responsive]="true"
+          [autoHide]="true"
+          previousLabel="Anterior"
+          nextLabel="Próxima"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page"
+          screenReaderCurrentLabel="Você está em"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+</main>
