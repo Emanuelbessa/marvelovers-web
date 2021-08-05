@@ -6,7 +6,7 @@ import { CharactersComponent } from './list/characters.component';
 
 const routes: Routes = [
   {
-    path: 'characters',
+    path: '',
     children: [
       {
         path: '',
