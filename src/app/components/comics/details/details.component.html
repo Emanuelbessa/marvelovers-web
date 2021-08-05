@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-center mt-4 mb-3" *ngIf="isLoaded">
+  <div class="col-md-6">
+    <div class="card" style="width: 40rem">
+      <div
+        class="h5 card-header text-center bg-black text-white font-weight-bold"
+      >
+        <button
+          type="button"
+          class="btn btn-sm mr-3"
+          [ngClass]="{
+            'btn-warning': comic.favorited,
+            'btn-secondary': !comic.favorited
+          }"
+          (click)="favorite(comic)"
+        >
+          <app-feather-icons [icon]="'star'"></app-feather-icons>
+        </button>
+        {{ comic.title }}
+      </div>
+      <img
+        class="card-img-top"
+        [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <p class="card-text">
+          {{ comic.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card" style="width: 18rem">
+      <div class="card-header">Personagens</div>
+      <ul class="list-group list-group-flush">
+        <li
+          *ngFor="let character of comic.characters.items"
+          class="list-group-item"
+        >
+          <a
+            [routerLink]="[
+              '/characters/details/',
+              character.resourceURI.split('characters/')[1]
+            ]"
+            >{{ character.name }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

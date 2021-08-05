@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ComicFavs } from './dto/comic.dto';
+import { ComicDto, ComicFavs } from './dto/comic.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +26,9 @@ export class ComicsService {
 
   favorite(comic: ComicFavs): Observable<any> {
     return this.http.post<any>(`${this.baseURL}/favorite`, comic);
+  }
+
+  getComicById(marvelId: number): Observable<ComicDto[]> {
+    return this.http.get<ComicDto[]>(`${this.baseURL}/${marvelId}`);
   }
 }
