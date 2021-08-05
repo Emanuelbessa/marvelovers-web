@@ -20,6 +20,8 @@ export class CharactersComponent implements OnInit {
 
   total: number;
 
+  isLoaded: boolean = false;
+
   constructor(
     private characterService: CharactersService,
     private router: Router,
@@ -63,6 +65,7 @@ export class CharactersComponent implements OnInit {
               charac.favorited = true;
             }
           });
+          this.isLoaded = true;
           Swal.close();
         },
         (err) => {

@@ -19,6 +19,8 @@ export class FavoritedComponent implements OnInit {
 
   total: number;
 
+  isLoaded: boolean = false;
+
   constructor(
     private comicService: ComicsService,
     private router: Router,
@@ -31,6 +33,7 @@ export class FavoritedComponent implements OnInit {
         (favs) => {
           this.comicsFavs = favs.map((comic) => ({ ...comic, favorited: true }));
           this.favoritesFiltered = this.comicsFavs;
+          this.isLoaded = true;
         },
         () => {
         },
