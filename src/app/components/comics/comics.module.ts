@@ -7,11 +7,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ComicsComponent } from './list/comics.component';
 import { ComicRoutingModule } from './comics.routing';
 import { FavoritedComponent } from './favorited/favorited.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     ComicsComponent,
     FavoritedComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
