@@ -12,3 +12,13 @@ export interface CreateUserDto {
   des_email_usr: string;
   des_password_usr: string;
 }
+
+export interface UpdateUserDto {
+  des_name_usr: string;
+  des_nickname_usr: string;
+}
+
+export interface UpdatePassProfile {
+  des_password_usr: string;
+  des_old_pass_usr: string;
+}
