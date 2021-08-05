@@ -1,0 +1,202 @@
+<div class="container mt-3 mb-3">
+  <div class="row no-gutter">
+    <div class="col-md-5 bg-black">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container d-flex justify-content-center">
+          <div class="row">
+            <div class="col-lg-12 col-xl-12">
+              <h2 class="text-light text-center">Atualize seu Perfil!</h2>
+              <form [formGroup]="editProfileForm" (ngSubmit)="submitEditForm()">
+                <div class="form-group mb-3">
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Nome"
+                    required=""
+                    autofocus=""
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    formControlName="name"
+                  />
+                  <div
+                    *ngIf="
+                      editProfileForm.get('name').hasError('required') &&
+                      editProfileForm.get('name').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Campo obrigatório.
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <input
+                    id="nickname"
+                    type="text"
+                    placeholder="Apelido"
+                    required=""
+                    autofocus=""
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    formControlName="nickname"
+                  />
+                  <div
+                    *ngIf="
+                      editProfileForm.get('nickname').hasError('required') &&
+                      editProfileForm.get('nickname').touched
+                    "
+                    class="text text-danger mt-2"
+                  >
+                    Campo obrigatório.
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="
+                    btn btn-primary btn-block
+                    text-uppercase
+                    mt-3
+                    rounded-pill
+                    shadow-sm
+                  "
+                >
+                  Atualizar Dados
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-5 bg-black">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container d-flex justify-content-center">
+          <div class="row">
+            <div class="col-lg-12 col-xl-12">
+              <h2 class="text-light text-center">Atualize sua Senha!</h2>
+              <form
+                [formGroup]="editPasswordForm"
+                (ngSubmit)="submitPasswords()"
+              >
+                <div class="form-group mb-3">
+                  <label class="col-form-label text-light">Senha Atual</label>
+                  <input
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    placeholder="Senha Atual"
+                    type="password"
+                    formControlName="currentPass"
+                  />
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm
+                        .get('currentPass')
+                        .hasError('required') &&
+                      editPasswordForm.get('currentPass').touched
+                    "
+                  >
+                    Campo obrigatório!
+                  </div>
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm
+                        .get('currentPass')
+                        .hasError('minlength') &&
+                      editPasswordForm.get('currentPass').touched
+                    "
+                  >
+                    Mínimo 8 caracteres!
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label class="col-form-label text-light">Nova Senha</label>
+                  <input
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    placeholder="*********"
+                    type="password"
+                    formControlName="password"
+                  />
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm.get('password').hasError('required') &&
+                      editPasswordForm.get('password').touched
+                    "
+                  >
+                    Campo obrigatório!
+                  </div>
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm.get('password').hasError('minlength') &&
+                      editPasswordForm.get('password').touched
+                    "
+                  >
+                    Mínimo 8 caracteres!
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <label class="col-form-label text-light"
+                    >Confirme senha</label
+                  >
+                  <input
+                    class="form-control rounded-pill border-0 shadow-sm px-4"
+                    placeholder="*********"
+                    type="password"
+                    formControlName="passwordConfirmed"
+                  />
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm
+                        .get('passwordConfirmed')
+                        .hasError('required') &&
+                      editPasswordForm.get('passwordConfirmed').touched
+                    "
+                  >
+                    Campo obrigatório!
+                  </div>
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm
+                        .get('passwordConfirmed')
+                        .hasError('minlength') &&
+                      editPasswordForm.get('passwordConfirmed').touched
+                    "
+                  >
+                    Mínimo 8 caracteres!
+                  </div>
+                  <div
+                    class="text text-danger mt-2"
+                    *ngIf="
+                      editPasswordForm
+                        .get('passwordConfirmed')
+                        .hasError('mismatch') &&
+                      editPasswordForm.get('passwordConfirmed').touched
+                    "
+                  >
+                    As senhas não correspondem!
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="
+                    btn btn-primary btn-block
+                    text-uppercase
+                    mt-4
+                    rounded-pill
+                    shadow-sm
+                  "
+                >
+                  Atualizar Senha
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

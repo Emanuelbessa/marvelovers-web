@@ -4,6 +4,7 @@ import { AuthComponent } from '@shared/components/layout/auth/auth.component';
 import { ContentComponent } from '@shared/components/layout/content/content.component';
 import { CharactersModule } from './components/characters/characters.module';
 import { ComicsModule } from './components/comics/comics.module';
+import { ProfileModule } from './components/profile/profile.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { HomeModule } from './pages/home/home.module';
 
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path: 'comics',
         loadChildren: (): Promise<ComicsModule> => import('./components/comics/comics.module').then((m) => m.ComicsModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: (): Promise<ProfileModule> => import('./components/profile/profile.module').then((m) => m.ProfileModule),
       },
     ],
   },
