@@ -20,6 +20,8 @@ export class ComicsComponent implements OnInit {
 
   total: number;
 
+  isLoaded: boolean = false;
+
   constructor(
     private comicService: ComicsService,
     private router: Router,
@@ -63,6 +65,7 @@ export class ComicsComponent implements OnInit {
               comic.favorited = true;
             }
           });
+          this.isLoaded = true;
           Swal.close();
         },
         (err) => {
