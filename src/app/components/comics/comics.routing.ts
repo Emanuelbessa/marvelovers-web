@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DetailsComponent } from './details/details.component';
 import { FavoritedComponent } from './favorited/favorited.component';
-import { CharactersComponent } from './list/characters.component';
+import { ComicsComponent } from './list/comics.component';
 
 const routes: Routes = [
   {
@@ -10,9 +9,9 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: CharactersComponent,
+        component: ComicsComponent,
         data: {
-          title: 'Characters',
+          title: 'Comics',
         },
       },
       {
@@ -20,14 +19,6 @@ const routes: Routes = [
         component: FavoritedComponent,
         data: {
           title: 'Characters',
-        },
-      },
-
-      {
-        path: 'details/:id',
-        component: DetailsComponent,
-        data: {
-          title: 'Details',
         },
       },
     ],
@@ -38,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CharacterRoutingModule {}
+export class ComicRoutingModule {}

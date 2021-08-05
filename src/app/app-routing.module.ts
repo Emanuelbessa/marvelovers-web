@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from '@shared/components/layout/auth/auth.component';
 import { ContentComponent } from '@shared/components/layout/content/content.component';
 import { CharactersModule } from './components/characters/characters.module';
+import { ComicsModule } from './components/comics/comics.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { HomeModule } from './pages/home/home.module';
 
@@ -27,8 +28,12 @@ const routes: Routes = [
     component: ContentComponent,
     children: [
       {
-        path: '',
+        path: 'characters',
         loadChildren: (): Promise<CharactersModule> => import('./components/characters/characters.module').then((m) => m.CharactersModule),
+      },
+      {
+        path: 'comics',
+        loadChildren: (): Promise<ComicsModule> => import('./components/comics/comics.module').then((m) => m.ComicsModule),
       },
     ],
   },
