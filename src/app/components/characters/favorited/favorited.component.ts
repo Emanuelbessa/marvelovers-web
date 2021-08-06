@@ -45,7 +45,7 @@ export class FavoritedComponent implements OnInit {
     this.favoritesFiltered = this.charactersFavs
       .filter((character) => character.des_name_cha
         .toLowerCase()
-        .startsWith(name));
+        .startsWith(name.toLowerCase()));
     this.total = this.favoritesFiltered.length;
     this.p = page;
     Swal.close();
