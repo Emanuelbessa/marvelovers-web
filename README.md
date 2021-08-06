@@ -1,27 +1,38 @@
-# MarveloversWeb
+# Marvelovers-Web
+Repositório responsável pelo Client do projeto Marvelovers
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+### Stack
+<div align="center"> 
+  <img alt="Angular" src="https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white"/>
+  <img alt="Visual Studio Code" src="https://img.shields.io/badge/VisualStudioCode-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
+  <img alt="Postman" src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=red" />
+</div>
+<br />
 
-## Development server
+1. Na raiz do projeto, instale as dependências:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```sh
+npm install
+```
 
-## Code scaffolding
+2. Em inicie o client.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+npm start
+```
 
-## Build
+## Author
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+👤 **Emanuel Bessa**
+<div align="center">
+  <a href="https://github.com/Emanuelbessa" target="_blank" title="Github">
+    <img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <a href="https://www.linkedin.com/in/emanuel-estrela-bessa/" target="_blank" title="Linkedin">
+    <img alt="LinkedIn" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  </a>
+</div>
 
-## Running unit tests
+## License
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Licensed under the [MIT license](LICENSE)
